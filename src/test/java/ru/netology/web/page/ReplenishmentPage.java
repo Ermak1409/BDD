@@ -10,8 +10,6 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ReplenishmentPage {
 
-    private final SelenideElement heading = $("[data-test-id=dashboard]");
-    private final SelenideElement title = $("h1.heading");
     private final SelenideElement amountField = $("[data-test-id=amount] input");
     private final SelenideElement fromField = $("[data-test-id=from] input");
     private final SelenideElement transferButton = $("[data-test-id=action-transfer]");
@@ -19,7 +17,9 @@ public class ReplenishmentPage {
     private final SelenideElement cancelButton = $("[data-test-id=action-cancel]");
 
     public ReplenishmentPage() {
+        SelenideElement heading = $("[data-test-id=dashboard]");
         heading.shouldBe(visible);
+        SelenideElement title = $("h1.heading");
         title.shouldHave(text("Пополнение карты"));
     }
 
@@ -30,7 +30,7 @@ public class ReplenishmentPage {
         fromField.sendKeys(Keys.DELETE);
     }
 
-    public DashboardPage transferBetweenOwnCards(DataHelper.TransferInfo transferInfo) {
+    public void transferBetweenOwnCards(DataHelper.TransferInfo transferInfo) {
         fieldClearing();
         amountField.setValue(String.valueOf(transferInfo.getAmount()));
         fromField.setValue(transferInfo.getNumberCard());
@@ -38,6 +38,6 @@ public class ReplenishmentPage {
         if (errorNotification.is(visible)) {
             cancelButton.click();
         }
-        return new DashboardPage();
+        new DashboardPage();
     }
 }

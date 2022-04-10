@@ -8,8 +8,8 @@ public class DataHelper {
 
     @Value
     public static class AuthInfo {
-        private String login;
-        private String password;
+        String login;
+        String password;
     }
 
     public static AuthInfo getUserAuthInfo() {
@@ -18,7 +18,7 @@ public class DataHelper {
 
     @Value
     public static class VerificationCode {
-        private String code;
+        String code;
     }
 
     public static VerificationCode getVerificationCodeFor() {
@@ -27,7 +27,7 @@ public class DataHelper {
 
     @Value
     public static class CardId {
-        private String id;
+        String id;
     }
 
     public static CardId getFirstCardId() {
@@ -40,8 +40,8 @@ public class DataHelper {
 
     @Value
     public static class TransferInfo {
-        private int amount;
-        private String numberCard;
+        int amount;
+        String numberCard;
     }
 
     public static TransferInfo getFirstCardTransferInfo() {
